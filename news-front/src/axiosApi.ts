@@ -1,8 +1,8 @@
 import axios from 'axios';
-import {API_URL} from './constants.ts';
+import {apiURL} from './constants';
 
 const axiosApi = axios.create({
-  baseURL: API_URL,
+  baseURL: apiURL,
 });
 
 export default axiosApi;

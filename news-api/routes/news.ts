@@ -19,16 +19,18 @@ newsRouter.get("/:id", async (req, res) => {
 })
 
 newsRouter.post("/", imagesUpload.single('image'), async (req, res) => {
-    const {title, content, image} = req.body;
+    const {title, content} = req.body;
+    const image = req.file ? req.file.filename : null;
 
-    if (!title || !content) {
+
+  if (!title || !content) {
         return res.status(422).send({error: 'Content cannot be empty'});
     }
 
     const newItem: NewsMutation = {
         title: title,
         content: content,
-        image: image
+        image: image,
     }
 
     try  {
